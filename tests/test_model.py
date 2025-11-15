@@ -6,8 +6,9 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-from src.data_loader import load_iris_data
-from src.model import IrisClassifier
+from src.data_loader import load_iris_data  # noqa: E402
+from src.model import IrisClassifier  # noqa: E402
+
 
 class TestIrisClassifier:
     def setup_method(self):

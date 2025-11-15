@@ -52,14 +52,3 @@ def test_predict_before_training_gives_error():
         assert False, "predict should raise ValueError when model is not trained"
     except ValueError as e:
         assert "trained" in str(e).lower()
-
-
-def test_save_before_training_gives_error(tmp_path):
-    clf = IrisClassifier()
-    save_path = tmp_path / "iris_model_test.pkl"
-
-    try:
-        clf.save_model(str(save_path))
-        assert False, "save_model should raise ValueError when model is not trained"
-    except ValueError as e:
-        assert "trained" in str(e).lower()

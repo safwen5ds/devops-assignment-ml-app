@@ -1,13 +1,14 @@
-from src.data_loader import load_iris_as_dataframe, get_dataset_info
-from src.model import IrisClassifier
-
 import os
 import sys
 
 import numpy as np
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
+from src.data_loader import load_iris_as_dataframe, get_dataset_info
+from src.model import IrisClassifier
 
 def test_df_columns_and_rows():
     df_iris = load_iris_as_dataframe()
@@ -25,12 +26,10 @@ def test_df_columns_and_rows():
         assert col in df_iris.columns, f"column {col} is missing"
 
     assert len(df_iris) == 150
-
     assert set(df_iris["target"].unique()) == {0, 1, 2}
 
 
 def test_dataset_info_values():
-
     info = get_dataset_info()
 
     assert info["n_samples"] == 150
@@ -38,16 +37,12 @@ def test_dataset_info_values():
     assert info["n_classes"] == 3
 
     class_dist = info["class_distribution"]
-
     assert sum(class_dist.values()) == info["n_samples"]
-
     assert set(class_dist.keys()) == {0, 1, 2}
 
 
 def test_predict_before_training_gives_error():
-
     clf = IrisClassifier()
-
     x_sample = np.array([[5.1, 3.5, 1.4, 0.2]])
 
     try:
@@ -58,7 +53,6 @@ def test_predict_before_training_gives_error():
 
 
 def test_save_before_training_gives_error(tmp_path):
-
     clf = IrisClassifier()
     save_path = tmp_path / "iris_model_test.pkl"
 

@@ -53,7 +53,7 @@ Inside the virtual environment I installed `the testing framework pytest` using 
 
 Project structure in VS Code after preparing the code for testing. The src folder now contains an `__init__.py` file so it behaves as a proper Python package, and the tests folder contains the initial `test_model.py` test suite. This layout is required so that tests can import modules from src correctly.
 
-**Important: `pytest` couldn’t run at first because the `src` folder was not detectable or reachable by `pytest`, so I added an `__init__.py` file and made the changes below so that `pytest` can run correctly both locally and in GitHub CI.**
+**Important: `pytest` couldn’t run at first because the `src` folder was not detectable or reachable by `pytest`, so I added an `__init__.py` file and made the changes below so that `pytest` can run correctly both locally and in GitHub CI. Also the test file name must start with "test_" or finish with "_test"**
 
 
 ![](assets/20251115_055837_image13.png)

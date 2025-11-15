@@ -1,12 +1,10 @@
 import os
 import sys
-
 import numpy as np
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
-
 
 from src.data_loader import load_iris_as_dataframe, get_dataset_info  # noqa: E402
 from src.model import IrisClassifier  # noqa: E402
